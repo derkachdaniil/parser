@@ -8,7 +8,6 @@
 #include "parser_shared_classes.h"
 #include "omni_storage.h"
 #include "parser_generator.h"
-#include "mpp_brag_lexer.h"
 
 
 map<wstring, int> typename_to_size = { {L"auto",1} };
