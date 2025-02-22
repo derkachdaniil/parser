@@ -1,0 +1,34 @@
+void func() 
+{
+	code;
+}
+void func2(auto code) 
+{
+	code;
+}
+void main() 
+{
+	if(code)
+	{
+		code;
+	} 
+	if(code) 
+	{
+		code;
+	} 
+	else
+		code;
+	if(code) 
+		code;
+	else
+	{
+		code;
+	}
+	code + (ab - bc) * cd + 100;
+	auto bb = code + (ab - bc) * cd + 100;
+	code;
+	for(auto i = 0;i < 15;i=i+1)
+	{
+		code;
+	}
+}

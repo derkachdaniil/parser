@@ -1,0 +1,24 @@
+bf-program : (@main_|function)*
+if_oper : /"if" /"(" @calc-p15 /")" (block | (@operator /";")) [/"else" (block | (@operator /";"))]
+main_ : /"void" /"main" /"(" /")" block
+function : NAME NAME /"(" [NAME NAME] (/"," NAME NAME)* /")" block
+
+for_oper_standart : /"for" /"(" (c_set | c_let)/";"  calc-p15 /";" c_set /")" (block | (@operator /";"))
+
+block : /"{" (if_oper | @operator /";" | for_oper_standart)* /"}"
+operator : calc-p15 | c_set | c_let
+operand :  INTEGER | STRING | "endl" | NAME | if_oper | @for_oper_standart |  /"(" calc-p15 /")"
+
+calc-p2 :   @operand (/"(" @calc-p15 (/"," @calc-p15)* /")"   |  
+				     /"[" @calc-p15 /"]")*
+calc-p3 :   ("!" | "-")* @calc-p2
+calc-p5 :   @calc-p3 (("%" | "*" | "/") calc-p3)*
+calc-p6 :   @calc-p5 (("+" | "-") calc-p5)*
+calc-p9 :   @calc-p6 ((">" | "<" | ">=" | "<=") calc-p6)*
+calc-p10 :  @calc-p9 (("==" | "!=") calc-p9)*
+calc-p14 :  @calc-p10 ("&&" calc-p10)*
+calc-p15 :  @calc-p14 ("||" calc-p14)*
+
+
+c_let : /"auto" NAME /"=" (@operator) 
+c_set : NAME /"=" (@operator)
